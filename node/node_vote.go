@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"errors"
 
-	"github.com/golang/crypto/blake2b"
+	"golang.org/x/crypto/blake2b"
 )
 
 type MessageVote struct {

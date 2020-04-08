@@ -4,10 +4,10 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/frankh/nano/address"
-	"github.com/frankh/nano/blocks"
-	"github.com/frankh/nano/store"
-	"github.com/frankh/nano/uint128"
+	"github.com/bbedward/nano/address"
+	"github.com/bbedward/nano/blocks"
+	"github.com/bbedward/nano/store"
+	"github.com/bbedward/nano/uint128"
 )
 
 func TestNew(t *testing.T) {

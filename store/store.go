@@ -7,11 +7,11 @@ import (
 	"log"
 	"sync"
 
+	"github.com/bbedward/nano/address"
+	"github.com/bbedward/nano/blocks"
+	"github.com/bbedward/nano/types"
+	"github.com/bbedward/nano/uint128"
 	"github.com/dgraph-io/badger"
-	"github.com/frankh/nano/address"
-	"github.com/frankh/nano/blocks"
-	"github.com/frankh/nano/types"
-	"github.com/frankh/nano/uint128"
 )
 
 type Config struct {
@@ -32,7 +32,7 @@ type BlockItem struct {
 
 func (i *BlockItem) ToBlock() blocks.Block {
 	meta := i.UserMeta()
-	value, _ := i.Value()
+	value, _ := i.ValueCopy(nil)
 
 	dec := gob.NewDecoder(bytes.NewBuffer(value))
 	var result blocks.Block
@@ -91,9 +91,7 @@ func getConn() *badger.Txn {
 	}
 
 	if globalConn == nil {
-		opts := badger.DefaultOptions
-		opts.Dir = Conf.Path
-		opts.ValueDir = Conf.Path
+		opts := badger.DefaultOptions(Conf.Path)
 		conn, err := badger.Open(opts)
 		if err != nil {
 			panic(err)
@@ -106,7 +104,7 @@ func getConn() *badger.Txn {
 }
 
 func releaseConn(conn *badger.Txn) {
-	currentTxn.Commit(nil)
+	currentTxn.Commit()
 	currentTxn = nil
 	connLock.Unlock()
 }
@@ -253,39 +251,34 @@ func storeBlock(conn *badger.Txn, block blocks.Block) error {
 // parent block, balance, etc.
 func uncheckedStoreBlock(conn *badger.Txn, block blocks.Block) {
 	var buf bytes.Buffer
-	var meta byte
 	enc := gob.NewEncoder(&buf)
 	switch block.Type() {
 	case blocks.Open:
 		b := block.(*blocks.OpenBlock)
-		meta = MetaOpen
 		err := enc.Encode(b)
 		if err != nil {
 			panic(err)
 		}
 		// Open blocks need to be stored twice, once keyed on account,
 		// once keyed on hash.
-		err = conn.SetWithMeta(b.RootHash().ToBytes(), buf.Bytes(), meta)
+		err = conn.Set(b.RootHash().ToBytes(), buf.Bytes())
 		if err != nil {
 			panic(err)
 		}
 	case blocks.Send:
 		b := block.(*blocks.SendBlock)
-		meta = MetaSend
 		err := enc.Encode(b)
 		if err != nil {
 			panic(err)
 		}
 	case blocks.Receive:
 		b := block.(*blocks.ReceiveBlock)
-		meta = MetaReceive
 		err := enc.Encode(b)
 		if err != nil {
 			panic(err)
 		}
 	case blocks.Change:
 		b := block.(*blocks.ChangeBlock)
-		meta = MetaChange
 		err := enc.Encode(b)
 		if err != nil {
 			panic(err)
@@ -294,7 +287,7 @@ func uncheckedStoreBlock(conn *badger.Txn, block blocks.Block) {
 		panic("Unknown block type")
 	}
 
-	err := conn.SetWithMeta(block.Hash().ToBytes(), buf.Bytes(), meta)
+	err := conn.Set(block.Hash().ToBytes(), buf.Bytes())
 	if err != nil {
 		panic("Failed to store block")
 	}

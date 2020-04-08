@@ -5,11 +5,11 @@ import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/frankh/nano/address"
-	"github.com/frankh/nano/blocks"
-	"github.com/frankh/nano/types"
-	"github.com/frankh/nano/uint128"
-	"github.com/frankh/nano/utils"
+	"github.com/bbedward/nano/address"
+	"github.com/bbedward/nano/blocks"
+	"github.com/bbedward/nano/types"
+	"github.com/bbedward/nano/uint128"
+	"github.com/bbedward/nano/utils"
 )
 
 type MessageBlockCommon struct {
