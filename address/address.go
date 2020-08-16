@@ -30,7 +30,7 @@ func ValidateAddress(account types.Account) bool {
 func AddressToPub(account types.Account) (public_key []byte, err error) {
 	address := string(account)
 
-	if address[:4] == "xrb_" {
+	if address[:4] == "xrb_" || address[:4] == "ban_" {
 		address = address[4:]
 	} else if address[:5] == "nano_" {
 		address = address[5:]
