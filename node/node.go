@@ -9,7 +9,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/bbedward/nano/store"
+	"github.com/paw-digital/nano/store"
 )
 
 var MagicNumber = [2]byte{'R', 'C'}
