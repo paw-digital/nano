@@ -7,13 +7,13 @@ import (
 	"encoding/hex"
 	"errors"
 
-	"github.com/bbedward/nano/types"
-	"github.com/bbedward/nano/utils"
+	"github.com/paw-digital/nano/types"
+	"github.com/paw-digital/nano/utils"
 	"golang.org/x/crypto/blake2b"
 
 	// We've forked golang's ed25519 implementation
 	// to use blake2b instead of sha3
-	"github.com/bbedward/crypto/ed25519"
+	"github.com/paw-digital/crypto/ed25519"
 )
 
 // nano uses a non-standard base32 character set.

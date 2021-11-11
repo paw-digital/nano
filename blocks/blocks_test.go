@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/bbedward/nano/address"
-	"github.com/bbedward/nano/utils"
+	"github.com/paw-digital/nano/address"
+	"github.com/paw-digital/nano/utils"
 )
 
 func TestSignMessage(t *testing.T) {

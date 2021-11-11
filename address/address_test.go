@@ -4,7 +4,7 @@ import (
 	"encoding/hex"
 	"testing"
 
-	"github.com/bbedward/nano/types"
+	"github.com/paw-digital/nano/types"
 )
 
 var valid_addresses = []types.Account{

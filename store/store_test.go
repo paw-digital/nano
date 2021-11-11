@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/bbedward/nano/blocks"
+	"github.com/paw-digital/nano/blocks"
 )
 
 func TestInit(t *testing.T) {

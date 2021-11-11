@@ -7,15 +7,15 @@ import (
 	"hash"
 	"strings"
 
-	"github.com/bbedward/nano/address"
-	"github.com/bbedward/nano/types"
-	"github.com/bbedward/nano/uint128"
-	"github.com/bbedward/nano/utils"
+	"github.com/paw-digital/nano/address"
+	"github.com/paw-digital/nano/types"
+	"github.com/paw-digital/nano/uint128"
+	"github.com/paw-digital/nano/utils"
 	"golang.org/x/crypto/blake2b"
 
 	// We've forked golang's ed25519 implementation
 	// to use blake2b instead of sha3
-	"github.com/bbedward/crypto/ed25519"
+	"github.com/paw-digital/crypto/ed25519"
 )
 
 const LiveGenesisBlockHash types.BlockHash = "991CF190094C00F0B68E2E5F75F6BEE95A2E0BD93CEAA4A6734DB9F19B728948"

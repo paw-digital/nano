@@ -7,10 +7,10 @@ import (
 	"log"
 	"sync"
 
-	"github.com/bbedward/nano/address"
-	"github.com/bbedward/nano/blocks"
-	"github.com/bbedward/nano/types"
-	"github.com/bbedward/nano/uint128"
+	"github.com/paw-digital/nano/address"
+	"github.com/paw-digital/nano/blocks"
+	"github.com/paw-digital/nano/types"
+	"github.com/paw-digital/nano/uint128"
 	"github.com/dgraph-io/badger"
 )
 

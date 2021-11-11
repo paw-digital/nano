@@ -3,12 +3,12 @@ package wallet
 import (
 	"encoding/hex"
 
-	"github.com/bbedward/crypto/ed25519"
-	"github.com/bbedward/nano/address"
-	"github.com/bbedward/nano/blocks"
-	"github.com/bbedward/nano/store"
-	"github.com/bbedward/nano/types"
-	"github.com/bbedward/nano/uint128"
+	"github.com/paw-digital/crypto/ed25519"
+	"github.com/paw-digital/nano/address"
+	"github.com/paw-digital/nano/blocks"
+	"github.com/paw-digital/nano/store"
+	"github.com/paw-digital/nano/types"
+	"github.com/paw-digital/nano/uint128"
 	"github.com/pkg/errors"
 )
 

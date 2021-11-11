@@ -15,9 +15,9 @@ Components
 
 Eventually the project will contain the following components:
 
- * [GoNano](https://github.com/bbedward/nano)
+ * [GoNano](https://github.com/paw-digital/nano)
     > A support library containing common functions, e.g. block validation, hashing, proof of work, etc
- * [Nano Vanity](https://github.com/bbedward/nano-vanity)
+ * [Nano Vanity](https://github.com/paw-digital/nano-vanity)
     > A tool to generate vanity addresses (See https://en.bitcoin.it/wiki/Vanitygen)
  * [GoNano Node](#) - Coming Soon...
     > A full node implementation compatible with the official Nano wallet, but with faster initial sync times out of the box.
@@ -29,7 +29,7 @@ Milestones
 
   * ~Vanity Address Generator~
     > A simple project to get the basic public-key cryptography functions working and tested.
-    - Done! ([Nano Vanity](https://github.com/bbedward/nano-vanity))
+    - Done! ([Nano Vanity](https://github.com/paw-digital/nano-vanity))
   * GoNano Node
     * A basic node that can validate and store blocks sent to it
         * ~Data structures~
